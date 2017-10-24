@@ -26,7 +26,11 @@ toDigitsRev x = reverse $ toDigits x
 -- ===================================
 
 doubleSecond :: [Integer] -> [Integer]
-doubleSecond xs = [if even (snd x) then fst x * 2 else fst x | x <- zip xs [1..length xs]]
+doubleSecond = mapWith [id, (*2)]
+
+mapWith :: [a -> b] -> [a] -> [b]
+mapWith fs = zipWith (\f x -> f x) (cycle fs)
+
 
 -- ===================================
 -- Ex. 3
