@@ -37,7 +37,7 @@ mapWith fs = zipWith (\f x -> f x) (cycle fs)
 -- ===================================
 
 sumDigits :: [Integer] -> Integer
-sumDigits = undefined
+sumDigits xs = sum $ map (sum . toDigits) xs
 
 
 -- ===================================
@@ -45,7 +45,7 @@ sumDigits = undefined
 -- ===================================
 
 isValid :: Integer -> Bool
-isValid = undefined
+isValid n = ((sumDigits . doubleSecond $ toDigitsRev n) `mod` 10) == 0
 
 
 -- ===================================
